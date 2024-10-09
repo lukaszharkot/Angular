@@ -1,8 +1,39 @@
 <main>
   <div class="c1">
     <div class="c2">
-      <id-navbar></id-navbar>
-      <div class="container"></div>
+      <id-navbar [site]="'dashboard'"></id-navbar>
+      <div class="site-label">Dashboard</div>
+      <div class="container">
+        <div class="dashboard-box 1">
+          <div class="dashboard-box-title">Total Revenue <i class="bi bi-currency-dollar dashboard-ico"></i></div>
+          <div class="dashboard-box-sum">${{revenue}}</div>
+          <div class="dashboard-box-text">+24.5% since from month</div>
+        </div>
+        <div class="dashboard-box 2">
+          <div class="dashboard-box-title">Total Sales <i class="bi bi-wallet2 dashboard-ico"></i></div>
+          <div class="dashboard-box-sum">{{sales}}</div>
+          <div class="dashboard-box-text">+19.1% since from month</div>
+        </div>
+        <div class="dashboard-box 3">
+          <div class="dashboard-box-title">New Subscriptions <i class="bi bi-person-check dashboard-ico"></i></div>
+          <div class="dashboard-box-sum">+{{subscriptions}}</div>
+          <div class="dashboard-box-text">+8.9% since from month</div>
+        </div>
+        <div class="dashboard-box 4">
+          <div class="dashboard-box-title">Active Users <i class="bi bi-people dashboard-ico"></i></div>
+          <div class="dashboard-box-sum">{{active}}</div>
+          <div class="dashboard-box-text">-2.9% since yesterday</div>
+        </div>
+        <div class="dashboard-box 5"></div>
+        <div class="dashboard-box 6">
+          <div class="dashboard-box-title">Recent Customers</div>
+          <div class="dashboard-box-text">You have gained {{customers.length}} customers this week.</div> <!-- Change the 10 customers to customer.lengh later and if its 0 display message No new customers -->
+          <ng-container *ngIf="customers.length > 0; else noCustomers"></ng-container> <!-- if statement in angular html. Displays the contents of the ng-container if true. -->>
+          <ng-template #noCustomers>
+            <div class="dashboard-no-customers">No new customers.</div>
+          </ng-template>
+        </div>
+      </div>
     </div>
   </div>
 </main>

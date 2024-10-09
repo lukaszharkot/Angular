@@ -5,3 +5,10 @@ body {
     background-color: #fafafa; /* or your desired color */
     font-family: "Inter", sans-serif;
 }
+
+.site-label{
+    font-weight: 700;
+    font-size: 32px;
+    margin-left: 10px;
+    margin-top: 30px;
+}
