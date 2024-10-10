@@ -1,24 +1,43 @@
-import { Component, OnInit, ViewChild, ElementRef, AfterViewInit, Input } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { fromEvent, map, scan, startWith } from 'rxjs';
-import { NgClass } from '@angular/common';
+import { CommonModule } from '@angular/common';
+import { RouterLink, Router, NavigationEnd } from '@angular/router'
+import { filter } from 'rxjs';
 
 @Component({
   selector: 'id-navbar',
   standalone: true,
-  imports: [NgClass],
-  template: `<id-navbar [site]="'dashboard'"></id-navbar>`,
+  imports: [CommonModule, RouterLink],
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements  AfterViewInit, OnInit {
   displayValue = 'ŁH';  // initial display value
+  site = ''
   @ViewChild('clickButton') clickButton!: ElementRef<HTMLButtonElement>; // reference to the button in the html file
-  @Input() site?: string; // ? means its optional
+
+
+  constructor(private router: Router) {}
 
   ngOnInit() {
     // OnInit is a lifecycle hook. It exists to perform any necessary initialization logic for the component. This can include fetching data, setting up initial values,
     // and subscribing to services. Its usefull When you need to initialize properties or make API calls to set up data that your component will use.
     // So it works when I am initializing an element.
+    this.router.events
+    .pipe(
+      filter(event => event instanceof NavigationEnd)  // Use filter to listen to NavigationEnd events, It is when angular router compleats 
+    )
+    .subscribe((event: any) => {
+      const url = event.urlAfterRedirects || event.url;
+      // Update the site value based on the URL
+      if (url === '/' || url === '/dashboard') {
+        this.site = 'dashboard';
+      } else if (url.includes('customers')) {
+        this.site = 'customer';
+      } else if (url.includes('add-customer')) {
+        this.site = 'add-customer';
+      }
+    });
   }
 
   ngAfterViewInit() {

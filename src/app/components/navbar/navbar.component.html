@@ -1,10 +1,12 @@
 <main>
     <div class="navbar">
-        <div class="logo">Our Customers</div>
+        <a href="/">
+            <div class="logo">Our Customers</div>
+        </a>
         <div class="navlink-container">
-            <a [ngClass]="{'selected': site === 'dashboard'}">Overview</a>
-            <a [ngClass]="{'selected': site === 'customer'}">Customers</a>
-            <a [ngClass]="{'selected': site === 'add-customer'}">+ Add Customer</a>
+            <a routerLink="/" [ngClass]="{'selected': site === 'dashboard'}">Overview</a>
+            <a routerLink="/customers" [ngClass]="{'selected': site === 'customer'}">Customers</a>
+            <a routerLink="/add-customer" [ngClass]="{'selected': site === 'add-customer'}">+ Add Customer</a>
         </div>
         <button #clickButton class="avatar">{{ displayValue }}</button>
         <div class="under-line"></div>

@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+
+
 .navbar{
     display: flex;
     width: 100%;
@@ -31,7 +34,6 @@
     justify-content: space-between;
     margin-left: 5%;
     font-size: 13px;
-    color: #707070;
 }
 
 .avatar{
@@ -40,7 +42,6 @@
     align-items: center;
     width: 35px;
     height: 35px;
-    background-color: #f4f3f2;
     border-radius: 100%;
     position: absolute;
     right: 0;
@@ -61,13 +62,21 @@
 button{
     border: 1px solid #5f5f5f;;
     cursor: pointer;
+    background-color: transparent;
     transition: 0.4s ease-in-out;
 }
 button:hover{
-    background-color: #f1f1f1;
+    background-color: #e5e7eb;
 }
 
 .selected{
-    font-weight: 700;
-    color: #2e2e2e;
+    color: #000000;
+    font-weight: 600;
+}
+
+a{
+    text-decoration: none;
+    font-weight: 600;
+    color: #707070;
+    transition: 0.1s ease-in-out;
 }
